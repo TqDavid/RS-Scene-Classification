@@ -1,27 +1,28 @@
-"""ResNet models for Keras.
+"""ResNeXt models for Keras.
 
 # Reference paper
 
-- [Deep Residual Learning for Image Recognition]
-  (https://arxiv.org/abs/1512.03385) (CVPR 2016 Best Paper Award)
+- [Aggregated Residual Transformations for Deep Neural Networks]
+  (https://arxiv.org/abs/1611.05431) (CVPR 2017)
 
 # Reference implementations
 
 - [TensorNets]
   (https://github.com/taehoonlee/tensornets/blob/master/tensornets/resnets.py)
-- [Caffe ResNet]
-  (https://github.com/KaimingHe/deep-residual-networks/tree/master/prototxt)
+- [Torch ResNeXt]
+  (https://github.com/facebookresearch/ResNeXt/blob/master/models/resnext.lua)
 
 """
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
+import os
+
 from . import imagenet_utils
 from .imagenet_utils import decode_predictions
-from .resnet_common import ResNet50
-from .resnet_common import ResNet101
-from .resnet_common import ResNet152
+from .resnet_common import ResNeXt50
+from .resnet_common import ResNeXt101
 
 
 def preprocess_input(x, **kwargs):
@@ -34,4 +35,4 @@ def preprocess_input(x, **kwargs):
     # Returns
         Preprocessed array.
     """
-    return imagenet_utils.preprocess_input(x, mode='caffe', **kwargs)
+    return imagenet_utils.preprocess_input(x, mode='torch', **kwargs)
