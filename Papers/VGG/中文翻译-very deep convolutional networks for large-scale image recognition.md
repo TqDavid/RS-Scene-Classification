@@ -1,3 +1,4 @@
+---
 layout:     post
 title:      VGG论文翻译——中文版
 subtitle:   Very Deep Convolutional Networks for Large-Scale Image Recognition
@@ -6,8 +7,9 @@ author:     Nick
 header-img: img/博客背景.jpg
 catalog: true
 tags:
-
     - 论文阅读
+
+---
 
 ![Deep Learning](C:\Users\CV\Documents\GitHub\RS-Scene-Classification\paper\VGG\img\2018-06-11-1.jpg)
 
