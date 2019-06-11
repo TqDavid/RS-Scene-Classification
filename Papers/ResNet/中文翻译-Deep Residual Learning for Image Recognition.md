@@ -25,7 +25,7 @@ tags:
 
 当更深的网络能够开始收敛时，暴露了一个退化问题：随着网络深度的增加，准确率达到饱和（这可能并不奇怪）然后迅速下降。意外的是，这种下降不是由过拟合引起的，并且在适当的深度模型上添加更多的层会导致更高的训练误差，正如[10, 41]中报告的那样，并且由我们的实验完全证实。图1显示了一个典型的例子。
 
-![Figure 1](C:\Users\CV\Documents\GitHub\RS-Scene-Classification\Papers\GoogleNet\img\2019-06-11-2-1.png)
+![Figure 1](/Papers/ResNet/img/2019-06-11-2-1.png)
 
 图1 20层和56层的“简单”网络在CIFAR-10上的训练误差（左）和测试误差（右）。更深的网络有更高的训练误差和测试误差。ImageNet上的类似现象如图4所示。
 
@@ -35,7 +35,7 @@ tags:
 
 公式$F(x)+x$可以通过带有“快捷连接”的前向神经网络（图2）来实现。快捷连接[2, 33, 48]是那些跳过一层或更多层的连接。在我们的案例中，快捷连接简单地执行恒等映射，并将其输出添加到堆叠层的输出（图2）。恒等快捷连接既不增加额外的参数也不增加计算复杂度。整个网络仍然可以由带有反向传播的SGD进行端到端的训练，并且可以使用公共库（例如，Caffe [19]）轻松实现，而无需修改求解器。
 
-![Figure 2](C:\Users\CV\Documents\GitHub\RS-Scene-Classification\Papers\GoogleNet\img\2019-06-11-2-2.png)
+![Figure 2](/Papers/ResNet/img/2019-06-11-2-2.png)
 
 图2. 残差学习：构建块
 
@@ -65,7 +65,7 @@ CIFAR-10数据集上[20]也显示出类似的现象，这表明了优化的困�
 
 在实际情况下，恒等映射不太可能是最优的，但是我们的重构可能有助于对问题进行预处理。如果最优函数比零映射更接近于恒等映射，则求解器应该更容易找到关于恒等映射的抖动，而不是将该函数作为新函数来学习。我们通过实验（图7）显示学习的残差函数通常有更小的响应，表明恒等映射提供了合理的预处理。
 
-![Figure 7](C:\Users\CV\Documents\GitHub\RS-Scene-Classification\Papers\GoogleNet\img\2019-06-11-2-3.png)
+![Figure 7](/Papers/ResNet/img/2019-06-11-2-3.png)
 
 图7。层响应在CIFAR-10上的标准差（std）。这些响应是每个3×3层的输出，在BN之后非线性之前。上面：以原始顺序显示层。下面：响应按降序排列。
 
@@ -87,7 +87,7 @@ $$
 
 残差函数$F$的形式是可变的。本文中的实验包括有两层或三层（图5）的函数$F$，同时可能有更多的层。但如果FF只有一层，方程(1)类似于线性层：$y=W_1x+x$，我们没有看到优势。
 
-![Figure 5](C:\Users\CV\Documents\GitHub\RS-Scene-Classification\Papers\GoogleNet\img\2019-06-11-2-4.png)
+![Figure 5](/Papers/ResNet/img/2019-06-11-2-4.png)
 
 图5。ImageNet的深度残差函数FF。左：ResNet-34的构建块（在56×56的特征图上），如图3。右：ResNet-50/101/152的“bottleneck”构建块。
 
@@ -99,11 +99,11 @@ $$
 
 **简单网络**。 我们简单网络的基准（图3，中间）主要受到VGG网络[40]（图3，左图）的哲学启发。卷积层主要有3×3的滤波器，并遵循两个简单的设计规则：（i）对于相同的输出特征图尺寸，层具有相同数量的滤波器；（ii）如果特征图尺寸减半，则滤波器数量加倍，以便保持每层的时间复杂度。我们通过步长为2的卷积层直接执行下采样。网络以全局平均池化层和具有softmax的1000维全连接层结束。图3（中间）的加权层总数为34。
 
-[![Figure 3](C:\Users\CV\Documents\GitHub\RS-Scene-Classification\Papers\GoogleNet\img\2019-06-11-2-5.png)
+[![Figure 3](/Papers/ResNet/img/2019-06-11-2-5.png)
 
 图3。ImageNet的网络架构例子。左：作为参考的VGG-19模型[40](http://noahsnail.com/2017/07/31/2017-07-31-ResNet论文翻译——中文版/196亿FLOPs)。中：具有34个参数层的简单网络（36亿FLOPs）。右：具有34个参数层的残差网络（36亿FLOPs）。带点的快捷连接增加了维度。表1显示了更多细节和其它变种。
 
-![Table 1](C:\Users\CV\Documents\GitHub\RS-Scene-Classification\Papers\GoogleNet\img\2019-06-11-2-6.png)
+![Table 1](/Papers/ResNet/img/2019-06-11-2-6.png)
 
 表1。ImageNet架构。构建块显示在括号中（也可看图5），以及构建块的堆叠数量。下采样通过步长为2的conv3_1, conv4_1和conv5_1执行。
 
@@ -127,17 +127,17 @@ ImageNet中我们的实现遵循[21，40]的实践。调整图像大小，其较
 
 表2中的结果表明，较深的34层简单网络比较浅的18层简单网络有更高的验证误差。为了揭示原因，在图4（左图）中，我们比较训练过程中的训练/验证误差。我们观察到退化问题——虽然18层简单网络的解空间是34层简单网络解空间的子空间，但34层简单网络在整个训练过程中具有较高的训练误差。
 
-![Table 2](C:\Users\CV\Documents\GitHub\RS-Scene-Classification\Papers\GoogleNet\img\2019-06-11-2-7.png)
+![Table 2](/Papers/ResNet/img/2019-06-11-2-7.png)
 
 表2。ImageNet验证集上的Top-1错误率(%，10个裁剪图像测试)。相比于对应的简单网络，ResNet没有额外的参数。图4显示了训练过程。
 
-![Figure 4](C:\Users\CV\Documents\GitHub\RS-Scene-Classification\Papers\GoogleNet\img\2019-06-11-2-8.png)
+![Figure 4](/Papers/ResNet/img/2019-06-11-2-8.png)
 
 图4。在ImageNet上训练。细曲线表示训练误差，粗曲线表示中心裁剪图像的验证误差。左：18层和34层的简单网络。右：18层和34层的ResNet。在本图中，残差网络与对应的简单网络相比没有额外的参数。
 
 我们认为这种优化难度不可能是由于梯度消失引起的。这些简单网络使用BN[16]训练，这保证了前向传播信号有非零方差。我们还验证了反向传播的梯度，结果显示其符合BN的正常标准。因此既不是前向信号消失也不是反向信号消失。实际上，34层简单网络仍能取得有竞争力的准确率（表3），这表明在某种程度上来说求解器仍工作。我们推测深度简单网络可能有指数级低收敛特性，这影响了训练误差的降低。这种优化困难的原因将来会研究。
 
-![Table 3](C:\Users\CV\Documents\GitHub\RS-Scene-Classification\Papers\GoogleNet\img\2019-06-11-2-9.png)
+![Table 3](/Papers/ResNet/img/2019-06-11-2-9.png)
 
 表3。ImageNet验证集错误率（%，10个裁剪图像测试）。VGG16是基于我们的测试结果的。ResNet-50/101/152的选择B仅使用投影增加维度。
 
@@ -165,11 +165,11 @@ ImageNet中我们的实现遵循[21，40]的实践。调整图像大小，其较
 
 **与最先进的方法比较**。在表4中，我们与以前最好的单一模型结果进行比较。我们基准的34层ResNet已经取得了非常有竞争力的准确性。我们的152层ResNet具有单模型4.49％的top-5错误率。这种单一模型的结果胜过以前的所有综合结果（表5）。我们结合了六种不同深度的模型，形成一个集合（在提交时仅有两个152层）。这在测试集上得到了3.5％的top-5错误率（表5）。这次提交在2015年ILSVRC中荣获了第一名。
 
-![Table 4](C:\Users\CV\Documents\GitHub\RS-Scene-Classification\Papers\GoogleNet\img\2019-06-11-2-10.png)
+![Table 4](/Papers/ResNet/img/2019-06-11-2-10.png)
 
 表4。单一模型在ImageNet验证集上的错误率（%）(除了†是测试集上报告的错误率)。
 
-![Table 5](C:\Users\CV\Documents\GitHub\RS-Scene-Classification\Papers\GoogleNet\img\2019-06-11-2-11.png)
+![Table 5](/Papers/ResNet/img/2019-06-11-2-11.png)
 
 表5。模型综合的错误率(%)。top-5错误率是ImageNet测试集上的并由测试服务器报告的。
 
@@ -179,7 +179,7 @@ ImageNet中我们的实现遵循[21，40]的实践。调整图像大小，其较
 
 简单/残差架构遵循图3（中/右）的形式。网络输入是32×32的图像，每个像素减去均值。第一层是3×3卷积。然后我们在大小为{32,16,8}的特征图上分别使用了带有3×3卷积的6n个堆叠层，每个特征图大小使用2n层。滤波器数量分别为{16,32,64}。下采样由步长为2的卷积进行。网络以全局平均池化，一个10维全连接层和softmax作为结束。共有6n+2个堆叠的加权层。下表总结了这个架构：
 
-![Table](C:\Users\CV\Documents\GitHub\RS-Scene-Classification\Papers\GoogleNet\img\2019-06-11-2-12.png)
+![Table](/Papers/ResNet/img/2019-06-11-2-12.png)
 
 当使用快捷连接时，它们连接到成对的3×3卷积层上（共3n个快捷连接）。在这个数据集上，我们在所有案例中都使用恒等快捷连接（即选项A），因此我们的残差模型与对应的简单模型具有完全相同的深度，宽度和参数数量。
 
@@ -187,7 +187,7 @@ ImageNet中我们的实现遵循[21，40]的实践。调整图像大小，其较
 
 我们比较了n=3,5,7,9n=3,5,7,9，得到了20层，32层，44层和56层的网络。图6（左）显示了简单网络的行为。深度简单网络经历了深度增加，随着深度增加表现出了更高的训练误差。这种现象类似于ImageNet中（图4，左）和MNIST中（请看[41]）的现象，表明这种优化困难是一个基本的问题。
 
-![Figure 6](C:\Users\CV\Documents\GitHub\RS-Scene-Classification\Papers\GoogleNet\img\2019-06-11-2-13.png)
+![Figure 6](/Papers/ResNet/img/2019-06-11-2-13.png)
 
 图6。在CIFAR-10上训练。虚线表示训练误差，粗线表示测试误差。左：简单网络。简单的110层网络错误率超过60%没有展示。中间：ResNet。右：110层ResNet和1202层ResNet。
 
@@ -195,7 +195,7 @@ ImageNet中我们的实现遵循[21，40]的实践。调整图像大小，其较
 
 我们进一步探索了n=18n=18得到了110层的ResNet。在这种情况下，我们发现0.1的初始学习率对于收敛来说太大了。因此我们使用0.01的学习率开始训练，直到训练误差低于80%（大约400次迭代），然后学习率变回到0.1并继续训练。学习过程的剩余部分与前面做的一样。这个110层网络收敛的很好（图6，中）。它与其它的深且窄的网络例如FitNet[34]和Highway[41](http://noahsnail.com/2017/07/31/2017-07-31-ResNet论文翻译——中文版/表6)相比有更少的参数，但结果仍在目前最好的结果之间（6.43%，表6）。
 
-![Table 6](C:\Users\CV\Documents\GitHub\RS-Scene-Classification\Papers\GoogleNet\img\2019-06-11-2-14.png)
+![Table 6](/Papers/ResNet/img/2019-06-11-2-14.png)
 
 表6。在CIFAR-10测试集上的分类误差。所有的方法都使用了数据增强。对于ResNet-110，像论文[42]中那样，我们运行了5次并展示了“最好的(mean±std)”。
 
@@ -209,11 +209,11 @@ ImageNet中我们的实现遵循[21，40]的实践。调整图像大小，其较
 
 我们的方法对其他识别任务有很好的泛化性能。表7和表8显示了PASCAL VOC 2007和2012[5]以及COCO[26]的目标检测基准结果。我们采用更快的R-CNN[32]作为检测方法。在这里，我们感兴趣的是用ResNet-101替换VGG-16[40]。使用这两种模式的检测实现（见附录）是一样的，所以收益只能归因于更好的网络。最显著的是，在有挑战性的COCO数据集中，COCO的标准度量指标（mAP@[.5，.95]）增长了6.0％，相对改善了28％。这种收益完全是由于学习表示。
 
-![Table 7](C:\Users\CV\Documents\GitHub\RS-Scene-Classification\Papers\GoogleNet\img\2019-06-11-2-15.png)
+![Table 7](/Papers/ResNet/img/2019-06-11-2-15.png)
 
 表7。在PASCAL VOC 2007/2012测试集上使用基准Faster R-CNN的目标检测mAP(%)。更好的结果请看附录。
 
-![Table 8](C:\Users\CV\Documents\GitHub\RS-Scene-Classification\Papers\GoogleNet\img\2019-06-11-2-16.png)
+![Table 8](/Papers/ResNet/img/2019-06-11-2-16.png)
 
 表8。在COCO验证集上使用基准Faster R-CNN的目标检测mAP(%)。更好的结果请看附录。
 
