@@ -11,7 +11,7 @@ tags:
 
 ---
 
-![Deep Learning](C:\Users\CV\Documents\GitHub\RS-Scene-Classification\paper\VGG\img\2018-06-11-1.jpg)
+![Deep Learning](/Papers/VGG/img/2018-06-11-1.jpg)
 
 ## 摘要
 
@@ -43,13 +43,13 @@ tags:
 
 表1：ConvNet配置（以列显示）。随着更多的层被添加，配置的深度从左（A）增加到右（E）（添加的层以粗体显示）。卷积层参数表示为“conv⟨感受野大小⟩-通道数⟩”。为了简洁起见，不显示ReLU激活功能。
 
-![Table 1](C:\Users\CV\Documents\GitHub\RS-Scene-Classification\paper\VGG\img\2018-06-11-2.png)
+![Table 1](/Papers/VGG/img/2018-06-11-2.png)
 
 在表2中，我们报告了每个配置的参数数量。尽管深度很大，我们的网络中权重数量并不大于具有更大卷积层宽度和感受野的较浅网络中的权重数量（144M的权重在（Sermanet等人，2014）中）。
 
 表2：参数数量（百万级别）
 
-![Table 2](C:\Users\CV\Documents\GitHub\RS-Scene-Classification\paper\VGG\img\2018-06-11-3.png)
+![Table 2](/Papers/VGG/img/2018-06-11-3.png)
 
 ### 2.3 讨论
 
@@ -99,7 +99,7 @@ ConvNet训练过程通常遵循Krizhevsky等人（2012）（除了从多尺度�
 
 表3：在单测试尺度的ConvNet性能
 
-![Table 3](C:\Users\CV\Documents\GitHub\RS-Scene-Classification\paper\VGG\img\2018-06-11-4.png)
+![Table 3](/Papers/VGG/img/2018-06-11-4.png)
 
 首先，我们注意到，使用局部响应归一化（A-LRN网络）在没有任何归一化层的情况下，对模型A没有改善。因此，我们在较深的架构（B-E）中不采用归一化。
 
@@ -115,7 +115,7 @@ ConvNet训练过程通常遵循Krizhevsky等人（2012）（除了从多尺度�
 
 表4：在多个测试尺度上的ConvNet性能
 
-![Table 4](C:\Users\CV\Documents\GitHub\RS-Scene-Classification\paper\VGG\img\2018-06-11-5.png)
+![Table 4](/Papers/VGG/img/2018-06-11-5.png)
 
 ### 4.3 多裁剪图像评估
 
@@ -123,7 +123,7 @@ ConvNet训练过程通常遵循Krizhevsky等人（2012）（除了从多尺度�
 
 表5：ConvNet评估技术比较。在所有的实验中训练尺度S从[256；512]采样，三个测试适度Q考虑：{256, 384, 512}。
 
-![Table 5](C:\Users\CV\Documents\GitHub\RS-Scene-Classification\paper\VGG\img\2018-06-11-6.png)
+![Table 5](/Papers/VGG/img/2018-06-11-6.png)
 
 ### 4.4 卷积网络融合
 
@@ -133,7 +133,7 @@ ConvNet训练过程通常遵循Krizhevsky等人（2012）（除了从多尺度�
 
 表6：多个卷积网络融合结果
 
-![Table 6](C:\Users\CV\Documents\GitHub\RS-Scene-Classification\paper\VGG\img\2018-06-11-7.png)
+![Table 6](/Papers/VGG/img/2018-06-11-7.png)
 
 ### 4.5 与最新技术比较
 
@@ -142,7 +142,7 @@ ConvNet训练过程通常遵循Krizhevsky等人（2012）（除了从多尺度�
 
 表7：在ILSVRC分类中与最新技术比较。我们的方法表示为“VGG”。报告的结果没有使用外部数据。
 
-![Table 7](C:\Users\CV\Documents\GitHub\RS-Scene-Classification\paper\VGG\img\2018-06-11-8.png)
+![Table 7](/Papers/VGG/img/2018-06-11-8.png)
 
 从表7可以看出，我们非常深的ConvNets显著优于前一代模型，在ILSVRC-2012和ILSVRC-2013竞赛中取得了最好的结果。我们的结果对于分类任务获胜者（GoogLeNet具有6.7％的错误率）也具有竞争力，并且大大优于ILSVRC-2013获胜者Clarifai的提交，其使用外部训练数据取得了11.2％的错误率，没有外部数据则为11.7％。这是非常显著的，考虑到我们最好的结果是仅通过组合两个模型实现的——明显少于大多数ILSVRC提交。在单网络性能方面，我们的架构取得了最好节果（7.0％测试误差），超过单个GoogLeNet 0.9％。值得注意的是，我们并没有偏离LeCun（1989）等人经典的ConvNet架构，但通过大幅增加深度改善了它。
 
