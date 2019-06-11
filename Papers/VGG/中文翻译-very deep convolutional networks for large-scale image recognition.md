@@ -11,7 +11,7 @@ tags:
 
 ---
 
-![Deep Learning](/img/2018-06-11-1.jpg)
+![Deep Learning](/Papers/VGG/img/2018-06-11-1.jpg)
 
 ## 摘要
 
